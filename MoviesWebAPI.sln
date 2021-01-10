@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesWebAPI", "MoviesWebAPI\MoviesWebAPI.csproj", "{AF172DB8-209D-4B06-A486-F198DDC28C20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesWebAPI", "MoviesWebAPI\MoviesWebAPI.csproj", "{AF172DB8-209D-4B06-A486-F198DDC28C20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesWebAPI.Core", "MoviesWebAPI.Core\MoviesWebAPI.Core.csproj", "{539B2AC6-79BE-4395-B529-B22EA397EB39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesWebAPI.Tests", "MoviesWebAPI.Tests\MoviesWebAPI.Tests.csproj", "{6EB845A1-3F1D-4489-AD19-37981C3DA432}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesWebAPI.Core.Tests", "MoviesWebAPI.Core.Tests\MoviesWebAPI.Core.Tests.csproj", "{06DF598B-FDD9-4D90-AA81-88F9EBDB6DF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{AF172DB8-209D-4B06-A486-F198DDC28C20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF172DB8-209D-4B06-A486-F198DDC28C20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF172DB8-209D-4B06-A486-F198DDC28C20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{539B2AC6-79BE-4395-B529-B22EA397EB39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{539B2AC6-79BE-4395-B529-B22EA397EB39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{539B2AC6-79BE-4395-B529-B22EA397EB39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{539B2AC6-79BE-4395-B529-B22EA397EB39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EB845A1-3F1D-4489-AD19-37981C3DA432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB845A1-3F1D-4489-AD19-37981C3DA432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB845A1-3F1D-4489-AD19-37981C3DA432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB845A1-3F1D-4489-AD19-37981C3DA432}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06DF598B-FDD9-4D90-AA81-88F9EBDB6DF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06DF598B-FDD9-4D90-AA81-88F9EBDB6DF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06DF598B-FDD9-4D90-AA81-88F9EBDB6DF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06DF598B-FDD9-4D90-AA81-88F9EBDB6DF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
