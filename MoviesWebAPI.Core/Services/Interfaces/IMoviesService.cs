@@ -9,5 +9,6 @@ namespace MoviesWebAPI.Core.Services.Interfaces
     public interface IMoviesService
     {
         Task<IEnumerable<Movie>> GetMoviesAsync();
+        Task<Movie> GetMovieByIdAsync(int movieId);
     }
 }

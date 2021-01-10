@@ -13,6 +13,8 @@ namespace MoviesWebAPI.Core.Tests.Services
         private MoviesService _moviesService;
         private Mock<IMoviesRepository> _mockMoviesRepository;
         List<Movie> _movies;
+        Movie _movieDetails;
+        int _movieId = 1;
         [SetUp]
         public void Setup()
         {
@@ -22,6 +24,10 @@ namespace MoviesWebAPI.Core.Tests.Services
             { 
                 new Movie(),
                 new Movie()
+            };
+            _movieDetails = new Movie()
+            {
+                MovieId = _movieId
             };
         }
 
@@ -33,6 +39,17 @@ namespace MoviesWebAPI.Core.Tests.Services
             var result = await _moviesService.GetMoviesAsync();
 
             Assert.That(result, Is.Not.Null);
+        }
+
+        [Test]
+        public async Task GetMovieByIdAsync_ReturnsMovieDetailsFromRepository()
+        {
+            _mockMoviesRepository.Setup(x => x.GetMovieById(_movieId)).ReturnsAsync(_movieDetails);
+
+            var result = await _moviesService.GetMovieByIdAsync(_movieId);
+
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.MovieId, Is.EqualTo(_movieId));
         }
     }
 }

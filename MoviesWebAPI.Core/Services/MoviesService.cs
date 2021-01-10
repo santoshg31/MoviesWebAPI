@@ -17,6 +17,11 @@ namespace MoviesWebAPI.Core.Services
             _moviesRepository = moviesRepository;
         }
 
+        public async Task<Movie> GetMovieByIdAsync(int movieId)
+        {
+            return await _moviesRepository.GetMovieById(movieId);
+        }
+
         public async Task<IEnumerable<Movie>> GetMoviesAsync()
         {
             return await _moviesRepository.GetMovies();

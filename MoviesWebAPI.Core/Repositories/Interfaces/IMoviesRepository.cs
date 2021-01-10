@@ -9,5 +9,6 @@ namespace MoviesWebAPI.Core.Repositories.Interfaces
     public interface IMoviesRepository
     {
         Task<IEnumerable<Movie>> GetMovies();
+        Task<Movie> GetMovieById(int movieId);
     }
 }
