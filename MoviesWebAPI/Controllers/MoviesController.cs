@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MoviesWebAPI.Core.Services.Interfaces;
 
 namespace MoviesWebAPI.Controllers
 {
@@ -11,5 +12,12 @@ namespace MoviesWebAPI.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
+        private IMoviesService _moviesService;
+
+        public MoviesController(IMoviesService moviesService)
+        {
+            _moviesService = moviesService;
+        }
+
     }
 }

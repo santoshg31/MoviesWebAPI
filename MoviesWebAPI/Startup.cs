@@ -9,6 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MoviesWebAPI.Core.Repositories;
+using MoviesWebAPI.Core.Repositories.Interfaces;
+using MoviesWebAPI.Core.Services;
+using MoviesWebAPI.Core.Services.Interfaces;
 
 namespace MoviesWebAPI
 {
@@ -25,6 +29,9 @@ namespace MoviesWebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddScoped<IMoviesService, MoviesService>();
+            services.AddScoped<IMoviesRepository, MoviesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

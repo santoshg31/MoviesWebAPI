@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MoviesWebAPI.Core.Models
 {
-    class Movie
+    public class Movie
     {
     }
 }

@@ -1,10 +1,13 @@
-﻿using System;
+﻿using MoviesWebAPI.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MoviesWebAPI.Core.Services.Interfaces
 {
-    class IMoviesService
+    public interface IMoviesService
     {
+        Task<IEnumerable<Movie>> GetMovies();
     }
 }
