@@ -1,5 +1,6 @@
 ﻿using MoviesWebAPI.Core.Models;
 using MoviesWebAPI.Core.Repositories.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,9 +10,12 @@ namespace MoviesWebAPI.Core.Repositories
 {
     public class MoviesRepository : IMoviesRepository
     {
-        public Task<IEnumerable<Movie>> GetMovies()
+        public async Task<IEnumerable<Movie>> GetMovies()
         {
-            throw new NotImplementedException();
+            var json = System.IO.File.ReadAllText("movies.json");
+
+            var movies = JsonConvert.DeserializeObject<IEnumerable<Movie>>(json);
+            return  movies;
         }
     }
 }

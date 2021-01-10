@@ -17,9 +17,9 @@ namespace MoviesWebAPI.Core.Services
             _moviesRepository = moviesRepository;
         }
 
-        public Task<IEnumerable<Movie>> GetMovies()
+        public async Task<IEnumerable<Movie>> GetMoviesAsync()
         {
-            throw new NotImplementedException();
+            return await _moviesRepository.GetMovies();
         }
     }
 }
