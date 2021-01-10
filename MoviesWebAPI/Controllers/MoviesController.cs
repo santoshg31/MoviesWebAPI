@@ -38,6 +38,29 @@ namespace MoviesWebAPI.Controllers
                 return BadRequest("Sorry something went wrong.");
             }
         }
+        [HttpGet("movieDetails")]
+        public async Task<IActionResult> GetMovieByIdAsync(int? movieId)
+        {
+            try
+            {
+                if (movieId == null)
+                {
+                    return BadRequest("Invalid movieId");
+                }
+                var movieDetails = await _moviesService.GetMovieByIdAsync(movieId.Value);
+                if (movieDetails == null)
+                {
+                    return BadRequest("Movie not found");
+                }
+                var movieDetailsDto = _mapper.Map<MovieDto>(movieDetails);
+                return Ok(movieDetailsDto);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest("Sorry something went wrong.");
+            }
+            
+        }
 
     }
 }
