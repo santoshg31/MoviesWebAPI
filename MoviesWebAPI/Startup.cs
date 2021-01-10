@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ using MoviesWebAPI.Core.Repositories;
 using MoviesWebAPI.Core.Repositories.Interfaces;
 using MoviesWebAPI.Core.Services;
 using MoviesWebAPI.Core.Services.Interfaces;
+
 
 namespace MoviesWebAPI
 {
@@ -30,6 +32,7 @@ namespace MoviesWebAPI
         {
             services.AddControllers();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IMoviesService, MoviesService>();
             services.AddScoped<IMoviesRepository, MoviesRepository>();
         }
