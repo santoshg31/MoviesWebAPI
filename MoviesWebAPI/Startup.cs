@@ -34,8 +34,8 @@ namespace MoviesWebAPI
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "https://securingangularappscoursev2-sts.azurewebsites.net";
-                    options.Audience = "projects-api";
+                    options.Authority = "https://dev-wg0ww3bf.eu.auth0.com";
+                    options.Audience = "movies-api";
                     options.RequireHttpsMetadata = false;
                 });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
