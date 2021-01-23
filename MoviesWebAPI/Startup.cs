@@ -31,7 +31,13 @@ namespace MoviesWebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "https://securingangularappscoursev2-sts.azurewebsites.net";
+                    options.Audience = "projects-api";
+                    options.RequireHttpsMetadata = false;
+                });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IMoviesService, MoviesService>();
             services.AddScoped<IMoviesRepository, MoviesRepository>();
@@ -51,7 +57,7 @@ namespace MoviesWebAPI
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
