@@ -13,8 +13,7 @@ using MoviesWebAPI.Dto;
 namespace MoviesWebAPI.Controllers
 {
     [Route("api/movies")]
-    [ApiController]
-    [Authorize]
+    [ApiController]    
     public class MoviesController : ControllerBase
     {
         private IMoviesService _moviesService;
@@ -40,6 +39,23 @@ namespace MoviesWebAPI.Controllers
                 return BadRequest("Sorry something went wrong.");
             }
         }
+
+        [HttpGet("myMovies")]
+        [Authorize]
+        public async Task<IActionResult> GetMyBookedMoviesAsync()
+        {
+            try
+            {
+                var movies = await _moviesService.GetMoviesAsync();
+                var moviesDto = _mapper.Map<IEnumerable<MovieDto>>(movies);
+                return Ok(moviesDto.Where(x=> x.MovieId == 3 || x.MovieId == 4 ).ToList());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Sorry something went wrong.");
+            }
+        }
+
         [HttpGet("movieDetails")]
         public async Task<IActionResult> GetMovieByIdAsync(int? movieId)
         {

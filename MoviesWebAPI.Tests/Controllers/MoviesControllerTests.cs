@@ -26,6 +26,7 @@ namespace MoviesWebAPI.Tests.Controllers
         private int? _movieId = 1;
         private const string GetMoviesAsync = "GetMoviesAsync";
         private const string GetMovieByIdAsync = "GetMovieByIdAsync";
+        private const string GetMyBookedMoviesAsync = "GetMyBookedMoviesAsync";
 
         [SetUp]
         public void Setup()
@@ -125,6 +126,40 @@ namespace MoviesWebAPI.Tests.Controllers
 
             Assert.That(response, Is.TypeOf<BadRequestObjectResult>());
         }
+        [Test]
+        public void GetMyBookedMoviesAsync_HasGetAttribute()
+        {
+            var method = typeof(MoviesController).GetMethod(GetMoviesAsync);
 
+            var attribute = method?.GetCustomAttributes(typeof(HttpGetAttribute), false).Cast<HttpGetAttribute>().FirstOrDefault();
+
+            Assert.That(attribute, Is.Not.Null);
+            Assert.That(attribute.Template, Is.EqualTo("myMovies"));
+        }
+
+        [Test]
+        public async Task GetMyBookedMoviesAsync_ReturnsOkResultWithMoviesDto()
+        {
+            //arrange
+            _mockMoviesService.Setup(x => x.GetMoviesAsync()).ReturnsAsync(_movies);
+            _mockMapper.Setup(x => x.Map<IEnumerable<MovieDto>>(_movies)).Returns(_movieDtos);
+
+            //act
+            var response = await _moviesController.GetMoviesAsync();
+
+            //assert
+            Assert.That(response, Is.TypeOf<OkObjectResult>());
+            var result = response as OkObjectResult;
+            Assert.That(result.Value, Is.TypeOf<List<MovieDto>>());
+        }
+        [Test]
+        public async Task GetMyBookedMoviesAsync_IfMoviesServiceCallThrowsException_ReturnsBadRequest()
+        {
+            _mockMoviesService.Setup(x => x.GetMoviesAsync()).ThrowsAsync(new Exception());
+
+            var response = await _moviesController.GetMoviesAsync();
+
+            Assert.That(response, Is.TypeOf<BadRequestObjectResult>());
+        }
     }
 }
